@@ -1,0 +1,90 @@
+body{
+  text-align:center;
+  background-image: url(riskback2.jpg);
+}
+h1{
+  font-size: 60px;
+  border-radius: 30px;
+  color:rgb(220, 220, 226);
+}
+#selectors{
+  display:inline-block;
+  width:25%;
+  height:430px;
+  text-align:center;
+  background-image: url(riskback3.jpg);
+  border-radius: 30px;
+  float:right;
+  margin-right:3%;
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+}
+button{
+  display:block;
+  margin:10% auto;
+  width: 60%;
+  font-size:35px;
+  height:93px;
+  border-radius:20px;
+  background-color:rgb(220, 220, 226);
+  text-decoration: none;
+}
+#instructions{
+  display:inline-block;
+  width:25%;
+  float:left;
+  background-image: url(riskback3.jpg);
+  border-radius: 30px;
+  margin-left:3%;
+  height:430px;
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+}
+#centerText p{
+  display:block;
+  text-align:left;
+  color:lightgray;
+  font-size: 30px;
+  width:80%;
+  margin:10% auto;
+}
+h2{
+  display:block;
+  text-align:center;
+  color:lightgray;
+  font-size: 30px;
+  width:80%;
+  margin:5% auto;
+  margin-bottom:0%;
+}
+#instHead{
+  margin-top:10%;
+}
+li{
+  text-align: left;
+  color:lightgray;
+  font-size: 18px;
+  width:80%;
+  margin:3% auto;
+  margin-top:0%;
+}
+footer{
+  clear:both;
+  display:block;
+  background-color:gray;
+  font-size:20px;
+  padding:10px;
+  margin-top:5%;
+}
+#centerText{
+  display:inline-block;
+  padding:2%;
+  background-image: url(riskback3.jpg);
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  width:28%;
+  height:390px;
+  text-align:center;
+  border-radius: 30px;
+  margin: auto 5%;
+}
