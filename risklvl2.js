@@ -34,6 +34,8 @@ var controlArray;
 var compControlledT=0;
 var turnCounter=0;
 var controlledT=0;
+var borderingPT=[];
+var borderPT=0;
 
 function start(){
   mode=1;
@@ -192,9 +194,6 @@ function nextTurn(){
     console.log(compControlledT);
     if (compControlledT>0){
       computerAttack();
-      findCompEnd();
-      setAttackTroops();
-      setCResults();
       console.log("checkpoint 2");
       countTroops();
       document.getElementById("promptP").innerHTML="Place your troops! You have "+totalTroops+" Troops!";
@@ -210,7 +209,6 @@ function nextTurn(){
       }
     }
     setColors();
-    cMoveTroops();
     checkWin();
     updateTroops();
     console.log("checkpoint 3");
@@ -468,7 +466,7 @@ function checkBorderPT(){
   if ((startTSelected=="t1" && endTSelected=="t2")||(startTSelected=="t1" && endTSelected=="t4")){
     borderPT=1;
   }
-  else if ((startTSelected=="t2" && endTSelected=="t1")||(startTSelected=="t2" && endTSelected=="t1")||(startTSelected=="t2" && endTSelected=="t5")){
+  else if ((startTSelected=="t2" && endTSelected=="t1")||(startTSelected=="t2" && endTSelected=="t3")||(startTSelected=="t2" && endTSelected=="t5")){
     borderPT=1;
   }
   else if ((startTSelected=="t3" && endTSelected=="t2")||(startTSelected=="t3" && endTSelected=="t6")){
@@ -920,88 +918,136 @@ function computerDeploy(){
 function computerAttack(){
   var randomA=Math.floor((Math.random() * 10));
   console.log("random numbers: "+randomA);
-  if (randomA==1 && t1C==1){
-    compStart="t1";
-  }
-  else if (randomA==2 && t2C==1){
-    compStart="t2";
-  }
-  else if (randomA==3 && t3C==1){
-    compStart="t3";
-  }
-  else if (randomA==4 && t4C==1){
-    compStart="t4";
-  }
-  else if (randomA==5 && t5C==1){
-    compStart="t5";
-  }
-  else if (randomA==6 && t6C==1){
-    compStart="t6";
-  }
-  else if (randomA==7 && t7C==1){
-    compStart="t7";
-  }
-  else if (randomA==8 && t8C==1){
-    compStart="t8";
-  }
-  else if (t9C==1){
+  if ((t9C==1 && t8C==0)||(t9C==1 && t8C==2)){
     compStart="t9";
+    compEnd="t8";
+    console.log("computerAttack1: "+compStart);
   }
-  else {
-    computerAttack();
+  else if ((t9C==1 && t6C==0)||(t9C==1 && t6C==2)){
+    compStart="t9";
+    compEnd="t6";
+    console.log("computerAttack2: "+compStart);
   }
-  checkBorderT();
-}
-function checkBorderT(){
-  if (compStart=="t1"){
-    borderingT=["t2","t4"];
+  else if ((t8C==1 && t7C==0)||(t8C==1 && t7C==2)){
+    compStart="t9";
+    compEnd="t7";
+    console.log("computerAttack3: "+compStart);
   }
-  else if (compStart=="t2"){
-    borderingT=["t1","t3","t5"];
+  else if ((t8C==1 && t9C==0)||(t8C==1 && t9C==2)){
+    compStart="t8";
+    compEnd="t9";
+    console.log("computerAttack4: "+compStart);
   }
-  else if (compStart=="t3"){
-    borderingT=["t2","t6"];
+  else if ((t8C==1 && t5C==0)||(t8C==1 && t5C==2)){
+    compStart="t8";
+    compEnd="t5";
+    console.log("computerAttack5: "+compStart);
   }
-  else if (compStart=="t4"){
-    borderingT=["t1","t7","t5"];
+  else if ((t7C==1 && t8C==0)||(t7C==1 && t8C==2)){
+    compStart="t7";
+    compEnd="t8";
+    console.log("computerAttack6: "+compStart);
   }
-  else if (compStart=="t5"){
-    borderingT=["t2","t8","t4","t6"];
+  else if ((t7C==1 && t4C==0)||(t7C==1 && t4C==2)){
+    compStart="t7";
+    compEnd="t4";
+    console.log("computerAttack7: "+compStart);
   }
-  else if (compStart=="t6"){
-    borderingT=["t5","t3","t9"];
+  else if ((t6C==1 && t3C==0)||(t6C==1 && t3C==2)){
+    compStart="t6";
+    compEnd="t3";
+    console.log("computerAttack8: "+compStart);
   }
-  else if (compStart=="t7"){
-    borderingT=["t4","t8"];
+  else if ((t6C==1 && t9C==0)||(t6C==1 && t9C==2)){
+    compStart="t6";
+    compEnd="t9";
+    console.log("computerAttack9: "+compStart);
   }
-  else if (compStart=="t8"){
-    borderingT=["t7","t9","t5"];
+  else if ((t6C==1 && t5C==0)||(t6C==1 && t5C==2)){
+    compStart="t6";
+    compEnd="t5";
+    console.log("computerAttack10: "+compStart);
   }
-  else if (compStart=="t9"){
-    borderingT=["t8","t6"];
+  else if ((t5C==1 && t2C==0)||(t5C==1 && t2C==2)){
+    compStart="t5";
+    compEnd="t2";
+    console.log("computerAttack11: "+compStart);
   }
-  console.log(borderingT);
-}
-function findCompEnd(){
-  randomB=Math.floor((Math.random() * 10));
-  console.log("randomB: "+randomB);
-  console.log("border array length: "+borderingT.length);
-
-  if (borderingT.length==0){
-    console.log("quit");
+  else if ((t5C==1 && t4C==0)||(t5C==1 && t4C==2)){
+    compStart="t5";
+    compEnd="t4";
+    console.log("computerAttack12: "+compStart);
   }
-
-  else if(randomB<borderingT.length){
-    compEnd=borderingT[randomB];
-    console.log("ending:"+compEnd);
+  else if ((t5C==1 && t6C==0)||(t5C==1 && t6C==2)){
+    compStart="t5";
+    compEnd="t6";
+    console.log("computerAttack13: "+compStart);
   }
-
-  else if (randomB>=borderingT.length){
-    findCompEnd();
+  else if ((t5C==1 && t8C==0)||(t5C==1 && t8C==2)){
+    compStart="t5";
+    compEnd="t8";
+    console.log("computerAttack14: "+compStart);
   }
-
+  else if ((t4C==1 && t5C==0)||(t4C==1 && t5C==2)){
+    compStart="t4";
+    compEnd="t5";
+    console.log("computerAttack15: "+compStart);
+  }
+  else if ((t4C==1 && t1C==0)||(t4C==1 && t1C==2)){
+    compStart="t4";
+    compEnd="t1";
+    console.log("computerAttack16: "+compStart);
+  }
+  else if ((t4C==1 && t7C==0)||(t4C==1 && t7C==2)){
+    compStart="t4";
+    compEnd="t7";
+    console.log("computerAttack17: "+compStart);
+  }
+  else if ((t3C==1 && t2C==0)||(t3C==1 && t2C==2)){
+    console.log("t start: "+ t3C);
+    compStart="t3";
+    compEnd="t2";
+    console.log("computerAttack18: "+compStart);
+  }
+  else if ((t3C==1 && t6C==0)||(t3C==1 && t6C==2)){
+    compStart="t3";
+    compEnd="t6";
+    console.log("computerAttack19: "+compStart);
+  }
+  else if ((t2C==1 && t3C==0)||(t2C==1 && t3C==2)){
+    compStart="t2";
+    compEnd="t3";
+    console.log("computerAttack20: "+compStart);
+  }
+  else if ((t2C==1 && t1C==0)||(t2C==1 && t1C==2)){
+    compStart="t2";
+    compEnd="t1";
+    console.log("computerAttack21: "+compStart);
+  }
+  else if ((t2C==1 && t5C==0)||(t2C==1 && t5C==2)){
+    compStart="t2";
+    compEnd="t5";
+    console.log("computerAttack22: "+compStart);
+  }
+  else if ((t1C==1 && t2C==0)||(t1C==1 && t2C==2)){
+    compStart="t1";
+    compEnd="t2";
+    console.log("computerAttack23: "+compStart);
+  }
+  else if ((t1C==1 && t4C==0)||(t1C==1 && t4C==2)){
+    compStart="t1";
+    compEnd="t4";
+    console.log("computerAttack24: "+compStart);
+  }
+  console.log("end of computerAttack: "+compStart);
+  setAttackTroops();
+  calculateCAttack();
+  cMoveTroops();
+  setCResults();
 }
 function setAttackTroops(){
+  cAttackingTroops=0;
+  cDefendingTroops=0;
   if (compStart=="t1"){
     cAttackingTroops=t1;
   }
@@ -1056,8 +1102,8 @@ function setAttackTroops(){
   else if (compEnd=="t9"){
     cDefendingTroops=t9;
   }
-  console.log(cAttackingTroops+" , "+cDefendingTroops);
-  calculateCAttack();
+  console.log("troops: "+cAttackingTroops+" , "+cDefendingTroops);
+  console.log("territories: "+compStart+","+compEnd);
 }
 function calculateCAttack(){
   console.log("running computer attack function"+cAttackingTroops+","+cDefendingTroops);
