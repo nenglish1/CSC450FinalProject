@@ -1,6 +1,11 @@
 body{
   text-align:center;
   background-image: url(riskback2.jpg);
+  /*Used the following link for the overflow property:
+  https://stackoverflow.com/questions/21563672/google-chrome-vertical-scroll-bars-mysteriously-appear-and-disappear
+  because my browser kept popping the scroll bar in and out and changing the dimensions of the page.
+  */
+  overflow:hidden;
 }
 h1{
   font-size: 60px;
@@ -85,7 +90,7 @@ footer{
   background-color:gray;
   font-size:20px;
   padding:10px;
-  margin-top:5%;
+  margin-top:3.5%;
 }
 #centerText{
   display:inline-block;
