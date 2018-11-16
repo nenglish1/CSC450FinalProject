@@ -6,6 +6,7 @@ h1{
   font-size: 60px;
   border-radius: 30px;
   color:rgb(220, 220, 226);
+  font-family: 'Dancing Script', cursive;
 }
 
 .territory{
@@ -69,6 +70,7 @@ h1{
   color:lightgray;
   font-size: 25px;
   margin:10% auto;
+  font-family: 'Shadows Into Light', cursive;
 }
 button{
   display:block;
@@ -78,6 +80,8 @@ button{
   height:93px;
   border-radius:20px;
   background-color:rgb(220, 220, 226);
+  font-family: 'Black And White Picture', sans-serif;
+  color:rgb(20,20,20);
 }
 h2{
   display:block;
@@ -87,6 +91,7 @@ h2{
   width:80%;
   margin:5% auto;
   margin-bottom:0%;
+  font-family: 'Shadows Into Light', cursive;
 }
 footer{
   background-color:gray;
