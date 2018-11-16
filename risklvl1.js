@@ -29,7 +29,6 @@ var attackResult=0;
 var compStart;
 var compEnd;
 var borderingT=[];
-var randomB;
 var controlArray;
 var compControlledT=0;
 var turnCounter=0;
@@ -915,8 +914,6 @@ function computerDeploy(){
   }
 }
 function computerAttack(){
-  var randomA=Math.floor((Math.random() * 10));
-  console.log("random numbers: "+randomA);
   if ((t9C==1 && t8C==0)||(t9C==1 && t8C==2)){
     compStart="t9";
     compEnd="t8";
